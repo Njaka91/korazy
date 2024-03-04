@@ -27,7 +27,7 @@ namespace todoAppMVC.Controllers
             if (DbConnexion.VerifierUtilisateur(utilisateur))
             {
                 Session["username"] = utilisateur.NonUtilisateur;
-                return Content($"<h1>Bonjour {utilisateur.NonUtilisateur}</h1>");
+                return Content($"<h1>Bonjour toi{utilisateur.NonUtilisateur}</h1>");
             }              
             else
             {
