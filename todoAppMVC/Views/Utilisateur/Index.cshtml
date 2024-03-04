@@ -1,0 +1,94 @@
+﻿@model todoAppMVC.Models.Utilisateur
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Login", "Utilisateur"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Utilisateur</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--<div class="form-group">
+            @Html.LabelFor(model => model.IdUtilisateur, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdUtilisateur, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IdUtilisateur, "", new { @class = "text-danger" })
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NonUtilisateur, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NonUtilisateur, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NonUtilisateur, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PasswordUtilisateur, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PasswordUtilisateur, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PasswordUtilisateur, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">S'inscrir</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Inscription</h4>
+                </div>
+                @using (Html.BeginForm("SignIn", "Utilisateur"))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NonUtilisateur, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="type" name="userName" value="" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PasswordUtilisateur, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.PasswordUtilisateur, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PasswordUtilisateur, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Sing In" class="btn btn-default" />
+                    </div>
+                }
+                </div>
+        </div>
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
